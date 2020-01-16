@@ -70,3 +70,11 @@ body{
     border-bottom: 1px #eee solid;
     padding-top: 110px;
   }
+
+  #developers{
+      background-color:#5d5b6a;
+  }
+
+  .dev-text{
+      color: #fff;
+  }
