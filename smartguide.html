@@ -58,7 +58,7 @@
       </div>
     </div>
   </header>
-  <!-- CONTACT SECTION -->
+  <!-- GUIDE SECTION -->
   <section id="contact" class="py-3">
     <div class="container">
       <div class="row">
@@ -93,7 +93,7 @@
               </div>
                 <div class="col-md-12 p-5">
                   <div class="form-group">
-                    <input type="submit" value="Submit" class="btn btn-outline-danger btn-block">
+                    <input type="submit" onclick="return data()" value="Submit" class="btn btn-outline-danger btn-block">
                   </div>
                 </div>
               </div>
@@ -103,6 +103,41 @@
       </div>
     </div>
   </section>
+  <!--RESULTS SECTION-->
+  <section id="results" class="py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card p-4">
+            <div class="card-body">
+              <h3 class="text-center">Crop Suggestions</h3>
+              <hr>
+              <div class="row" id="suggestion1">
+                <div class="col">
+                  <div id="name" class="text-center h5"></div>
+                </div>
+                <div class="col">
+                  <img id = "myimg" class="border" alt="">
+                </div>
+              </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+  <script>
+    function data()
+    {
+        document.getElementById("name").innerHTML = "Wheat";
+        image = document.getElementById("myimg");
+        image.src = "img/wheat.jpeg"
+        image.width = "350";
+        image.height = "200";
+        return false;           // Adds to the document
+    }
+  </script>
 
   
  <!--FOOTER-->
