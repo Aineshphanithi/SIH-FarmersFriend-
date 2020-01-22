@@ -72,7 +72,7 @@
             </p>
         </div>
         <div class="col-md-6">
-          <img src="img/farmers.jpg" alt="" class="img-fluid rounded-circle d-none d-md-block about-img">
+          <img src="{{ url_for('static', filename='img/farmers.jpg') }}" alt="" class="img-fluid rounded-circle d-none d-md-block about-img">
         </div>
       </div>
     </div>
@@ -86,27 +86,28 @@
       </div>
       <div class="row">
         <div class="col-md-2">
-          <img src="img/ainesh.jpg" class="rounded-circle border border-white" width="150" height="150" alt="">
+          <img src="{{ url_for('static', filename='img/ainesh.jpg') }}" class="figure-img img-fluid rounded-circle border border-white" width="150" height="150" alt="">
           <h7 class="text-center p-4 dev-text" >Ainesh Phanithi</h7>
         </div>
         <div class="col-md-2">
-          <img src="img/abhijeet.jpg"class="rounded-circle border border-white" width="150" height="150" alt="">
+          <img src="{{ url_for('static', filename='img/abhijeet.jpg') }}"class="figure-img img-fluid rounded-circle border border-white" width="150" height="150" alt="">
           <h7 class="text-center p-4 dev-text" >Abhijeet Reddy</h7>
         </div>
         <div class="col-md-2">
-          <img src="img/tarun.jpg"class="rounded-circle border border-white" width="150" height="150" alt="">
+          <img src="{{ url_for('static', filename='img/tarun.jpg') }}"class="figure-img img-fluid rounded-circle border border-white" width="150" height="150" alt="">
           <h7 class="text-center p-4 dev-text" >Tarun Bhargav</h7>
         </div>
         <div class="col-md-2">
-          <img src="img/lekhraj.jpg"class="rounded-circle border border-white" width="150" height="150" alt="">
+          <img src="{{ url_for('static', filename='img/lekhraj.jpg') }}"class="figure-img img-fluid rounded-circle border border-white" width="150" height="150" alt="">
           <h7 class="text-center p-4 dev-text" ><pr class="h7 text-center p-4 dev-text"> Lekh Raj</pr></h7>
         </div>
         <div class="col-md-2">
-          <img src="img/harsha.jpg"class="rounded-circle border border-white" width="150" height="150" alt="">
+          <img src="{{ url_for('static', filename='img/harsha.jpg') }}"class="figure-img img-fluid rounded-circle border border-white" width="150" height="150" alt="">
           <h7 class="text-center p-4 dev-text" >Harsha Sri</h7>
         </div>
         <div class="col-md-2">
-          <img src="img/ainesh.jpg"class="rounded-circle" width="150" height="150" alt="">
+          <img src="{{ url_for('static', filename='img/indu.jpg') }}"class="figure-img img-fluid rounded-circle border border-white" width="150" height="150" alt="">
+          <h7 class="text-center p-4 dev-text" >Induja Reddy</h7>
         </div>
       </div>
     </div>
@@ -122,8 +123,8 @@
           </div>
           <div class="col">
               <h5>Quick Links</h5>
-              <a href="" class="h6">About</a><br>
-              <a href="" class="h6">Register</a>
+              <a href="about.html" class="h6">About</a><br>
+              <a href="register.html" class="h6">Register</a>
           </div>
       </div>
   </div>

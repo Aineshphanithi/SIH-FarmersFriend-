@@ -132,7 +132,7 @@
     {
         document.getElementById("name").innerHTML = "Wheat";
         image = document.getElementById("myimg");
-        image.src = "img/wheat.jpeg"
+        image.src = "{{ url_for('static', filename='img/wheat.jpeg') }}"
         image.width = "350";
         image.height = "200";
         return false;           // Adds to the document
