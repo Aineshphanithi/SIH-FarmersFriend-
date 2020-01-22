@@ -7,6 +7,20 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/about.html')
+def about():
+    return render_template('about.html')
+
+
+@app.route('/register.html')
+def register():
+    return render_template('register.html')
+
+
+@app.route('/weatherupdates.html')
+def weaterupdates():
+    return render_template('weatherupdates.html')
+
 
 @app.route('/smartguide.html')
 def smartguide():
