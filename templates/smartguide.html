@@ -58,6 +58,7 @@
   </header>
   <!-- GUIDE SECTION -->
   <section id="contact" class="py-3">
+    <form method="POST">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -69,7 +70,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="firstname">Date</label>
-                    <input type="date" id="date" class="form-control" placeholder="Date">
+                    <input type="date" id="date" name="date" class="form-control" placeholder="Date" required>
                   </div>
                 </div>
               </div>
@@ -77,7 +78,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="state">State</label>
-                    <input type="text" id="state" class="form-control" placeholder="State">
+                    <input type="text" id="state" name="state" class="form-control" placeholder="State">
                   </div>
                 </div>
               </div>
@@ -85,13 +86,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="district">District</label>
-                    <input type="text" id="district" class="form-control" placeholder="District">
+                    <input type="text" id="district" name="district" class="form-control" placeholder="District" required>
                   </div>
                 </div>
               </div>
                 <div class="col-md-12 p-5">
                   <div class="form-group">
-                    <input type="submit" onclick="return data()" value="Submit" class="btn btn-outline-danger btn-block">
+                    <input type="submit" value="Submit" class="btn btn-outline-danger btn-block">
                   </div>
                 </div>
               </div>
@@ -100,6 +101,7 @@
         </div>
       </div>
     </div>
+  </form>
   </section>
 
   <!--RESULTS SECTION-->
@@ -113,7 +115,7 @@
               <hr>
               <div class="row" id="suggestion1">
                 <div class="col">
-                  <div id="name" class="text-center h5"></div>
+                  <div id="name" class="text-center h5">{{crop_name}}</div>
                 </div>
                 <div class="col">
                   <img id = "myimg" class="border" alt="">
@@ -130,9 +132,9 @@
   <script>
     function data()
     {
-        document.getElementById("name").innerHTML = "Wheat";
+        // document.getElementById("name").innerHTML = "Wheat";
         image = document.getElementById("myimg");
-        image.src = "{{ url_for('static', filename='img/wheat.jpeg') }}"
+        image.src = "{{ url_for('static', filename=crop_img) }}"
         image.width = "350";
         image.height = "200";
         return false;           // Adds to the document
