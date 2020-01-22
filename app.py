@@ -1,11 +1,18 @@
 from flask import Flask, request, render_template
 
+import pickle
+
 app = Flask(__name__)
+
+rainfall_model = pickle.load(open('Rainfall/rangareddi_jan_rainfall.pkl', 'rb'))
 
 
 @app.route('/')
 def home():
+    print(rainfall_model.predict([[2025]])[0])
+
     return render_template('index.html')
+
 
 @app.route('/about.html')
 def about():
@@ -18,7 +25,7 @@ def register():
 
 
 @app.route('/weatherupdates.html')
-def weaterupdates():
+def weatherupdates():
     return render_template('weatherupdates.html')
 
 
