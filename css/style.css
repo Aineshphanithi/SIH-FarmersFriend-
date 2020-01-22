@@ -5,10 +5,10 @@ body{
     color:#8cba51 !important;
 }
 .navbar .nav-link{
-    font-size: 16px;
+    font-size: 14px;
     text-transform: uppercase;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    padding-left: 0.7rem !important;
+    padding-right: 0.7rem !important;
 }
 
 .navbar .nav-item.active{
