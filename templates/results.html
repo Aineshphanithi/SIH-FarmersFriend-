@@ -47,7 +47,7 @@
 </nav>
 
   <!-- PAGE HEADER -->
-  <header style="background-color: #cca69d" id="page-header">
+  <header style="background-color: #c0ca33" id="page-header">
     <div class="container">
       <div class="row">
         <div class="col-md-6 m-auto text-center">
@@ -56,53 +56,46 @@
       </div>
     </div>
   </header>
-  <!-- GUIDE SECTION -->
-  <section id="contact" class="py-3">
-    <form action="results.html">
+  <!--RESULTS SECTION-->
+  <section id="results" class="py-3">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="card p-4">
             <div class="card-body">
-              <h3 class="text-center">Enter Data</h3>
+                <a href="smartguide.html" class = "btn btn-outline-danger">Go Back</a>
+              <h3 class="text-center">Crop Suggestions</h3>
               <hr>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="firstname">Date</label>
-                    <input type="date" id="date" name="date" class="form-control" placeholder="Date" required>
-                  </div>
+              <div class="row" id="suggestion1">
+                <div class="col">
+                  <div id="name" class="text-center h5">{{crop_name}}</div>
+                </div>
+                <div class="col">
+                  <img id = "myimg" class="border" alt="">
+                </div>
+                <div class="col">
+                  <div id="production" class="text-center h5"></div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="state">State</label>
-                    <input type="text" id="state" name="state" class="form-control" placeholder="State">
-                  </div>
-                </div>
               </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="district">District</label>
-                    <input type="text" id="district" name="district" class="form-control" placeholder="District" required>
-                  </div>
-                </div>
-              </div>
-                <div class="col-md-12 p-5">
-                  <div class="form-group">
-                    <input type="submit" value="Submit" class="btn btn-outline-danger btn-block">
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </form>
   </section>
+
+  <script>
+    function data()
+    {
+        // document.getElementById("name").innerHTML = "Wheat";
+        image = document.getElementById("myimg");
+        image.src = "{{ url_for('static', filename=crop_img) }}"
+        image.width = "350";
+        image.height = "200";
+        return false;           // Adds to the document
+    }
+  </script>
 
  <!--FOOTER-->
  <footer id="main-footer" class="text-center p-4">

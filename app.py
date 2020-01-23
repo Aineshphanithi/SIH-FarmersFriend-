@@ -71,6 +71,9 @@ def weatherupdates():
 def smartguide():
     return render_template('smartguide.html')
 
+@app.route('/results.html')
+def results():
+    return render_template('results.html')
 
 def seasons_extract(mon):
     seasons = ['Whole Year']
