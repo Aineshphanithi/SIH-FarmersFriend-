@@ -1,9 +1,11 @@
 from flask import Flask, request, render_template
+from airtable import Airtable
 
 import pickle
 import csv
 
 app = Flask(__name__)
+airtable = Airtable('apppRkyEG5N3DMbaZ', 'user_data', api_key='keyfbkI9WoPwdcQT1')
 
 crops_dict = {'Arecanut': 0, 'Other Kharif pulses': 1, 'Rice': 2, 'Banana': 3, 'Cashewnut': 4, 'Coconut': 5,
               'Dry ginger': 6, 'Sugarcane': 7, 'Sweet potato': 8, 'Tapioca': 9, 'Black pepper': 10,
@@ -67,10 +69,32 @@ def weatherupdates():
     return render_template('weatherupdates.html')
 
 
-@app.route('/smartguide.html')
-def smartguide():
-    return render_template('smartguide.html')
+@app.route('/register.html', methods=['POST'])
+def register_airtable():
+    f_name = request.form['firstname']
+    l_name = request.form['lastname']
+    phone = request.form['phone']
+    state = request.form['state']
+    dist = request.form['district']
+    pin = request.form['pin']
+    address = request.form['address']
 
+    if len(phone) > 10:
+        phone = phone[len(phone)-10:]
+
+    details = {'Phone': phone, 'First Name': f_name, 'Last Name': l_name,
+               'State': state, 'District': dist, 'Pin Code': pin, 'Address': address}
+
+    airtable.insert(details)
+
+    return render_template('index.html')
+
+
+@app.route('/results.html')
+def results():
+    return render_template('results.html')
+
+<<<<<<< HEAD
 @app.route('/askaquestion.html')
 def askaquestion():
     return render_template('askaquestion.html')
@@ -78,6 +102,8 @@ def askaquestion():
 # @app.route('/results.html')
 # def results():
 #     return render_template('results.html')
+=======
+>>>>>>> 471c2f55c511d42cda8732caffbeeab8f7018031
 
 def seasons_extract(mon):
     seasons = ['Whole Year']
@@ -102,63 +128,74 @@ def seasons_extract(mon):
 @app.route('/smartguide.html', methods=['POST'])
 def predict():
     # print(type(request.args))
-    if request.method == 'POST':
-        date = request.form['date']
-        state = request.form['state'].title()
-        dist = request.form['district'].upper()
+    # if request.method == 'POST':
+    date = request.form['date']
+    state = request.form['state'].title()
+    dist = request.form['district'].upper()
 
-        print(date, state, dist)
+    print(date, state, dist)
 
-        year = date[:4]
-        mon = months[int(date[5:7]) - 1]
-        # print(int(date[5:7]), year, mon)
+    year = date[:4]
+    mon = months[int(date[5:7]) - 1]
+    # print(int(date[5:7]), year, mon)
 
-        rainfall_avg = 0
-        for m in months:
-            rainfall_file_name = 'Rainfall/' + dist.lower() + '_' + m.lower() + '_rainfall.pkl'
-            rainfall_model = pickle.load(open(rainfall_file_name, 'rb'))
+    rainfall_avg = 0
+    for m in months:
+        rainfall_file_name = 'Rainfall/' + dist.lower() + '_' + m.lower() + '_rainfall.pkl'
+        rainfall_model = pickle.load(open(rainfall_file_name, 'rb'))
 
-            rainfall_avg += rainfall_model.predict([[year]])
+        rainfall_avg += rainfall_model.predict([[year]])
 
-        rainfall_avg = rainfall_avg / 12
+    rainfall_avg = rainfall_avg / 12
 
-        crop_file_name = 'Crop/' + dist.lower() + '_crop.pkl'
-        crop_model = pickle.load(open(crop_file_name, 'rb'))
+    crop_file_name = 'Crop/' + dist.lower() + '_crop.pkl'
+    crop_model = pickle.load(open(crop_file_name, 'rb'))
 
-        seasons = seasons_extract(mon)
+    seasons = seasons_extract(mon)
 
-        result = {}
-        for season in seasons:
-            for crop in crops_dist[dist]:
-                pa = crop_model.predict([['2020', season_dict[season], crops_dict[crop], rainfall_avg]])
+    result = {}
+    for season in seasons:
+        for crop in crops_dist[dist]:
+            pa = crop_model.predict([['2020', season_dict[season], crops_dict[crop], rainfall_avg]])
 
-                # result.append([pa[0], crop])
+            # result.append([pa[0], crop])
 
-                if crop in result.keys():
-                    result[crop] = max(pa[0], result[crop])
+            if crop in result.keys():
+                result[crop] = max(pa[0], result[crop])
 
-                else:
-                    result[crop] = pa[0]
+            else:
+                result[crop] = pa[0]
 
-        result = {k: v for k, v in sorted(result.items(), key=lambda item: item[1], reverse=True)}
+    result = {k: v for k, v in sorted(result.items(), key=lambda item: item[1], reverse=True)}
 
-        # print(rainfall, pa)
-        # print(crops_dist)
-
+<<<<<<< HEAD
         first_key1 = next(iter(result))
         crop_img1 = 'https://source.unsplash.com/200x300/?'+first_key1
+=======
+    # print(rainfall, pa)
+    # print(crops_dist)
+>>>>>>> 471c2f55c511d42cda8732caffbeeab8f7018031
 
-        first_key2 = next(iter(result))
-        crop_img2 = first_key2 + '.png'
+    first_key1 = next(iter(result))
+    crop_img1 = first_key1+'.png'
 
-        first_key3 = next(iter(result))
-        crop_img3 = first_key3 + '.png'
+    first_key2 = next(iter(result))
+    crop_img2 = first_key2 + '.png'
 
+<<<<<<< HEAD
         return render_template('results.html',
                                crop_name1=first_key1, crop_img1=crop_img1, production1=result[first_key1])
                               # crop_name2=first_key2, crop_img2=crop_img2, production2=result[first_key2],
                                #crop_name3=first_key3, crop_img3=crop_img3, production3=result[first_key3])
+=======
+    first_key3 = next(iter(result))
+    crop_img3 = first_key3 + '.png'
+>>>>>>> 471c2f55c511d42cda8732caffbeeab8f7018031
 
+    return render_template('results.html',
+                           crop_name1=first_key1, crop_img1=crop_img1, production1=result[first_key1],
+                           crop_name2=first_key2, crop_img2=crop_img2, production2=result[first_key2],
+                           crop_name3=first_key3, crop_img3=crop_img3, production3=result[first_key3])
 
 
 if __name__ == "__main__":
