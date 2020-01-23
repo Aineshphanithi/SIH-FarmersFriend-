@@ -71,9 +71,9 @@ def weatherupdates():
 def smartguide():
     return render_template('smartguide.html')
 
-@app.route('/results.html')
-def results():
-    return render_template('results.html')
+# @app.route('/results.html')
+# def results():
+#     return render_template('results.html')
 
 def seasons_extract(mon):
     seasons = ['Whole Year']
@@ -141,11 +141,20 @@ def predict():
         # print(rainfall, pa)
         # print(crops_dist)
 
-        first_key = next(iter(result))
-        app.jinja_env.globals['crop_img'] = 'img/wheat.jpeg'
+        first_key1 = next(iter(result))
+        crop_img1 = first_key1+'.png'
 
+        first_key2 = next(iter(result))
+        crop_img2 = first_key2 + '.png'
 
-        return render_template('smartguide.html', crop_name=first_key)
+        first_key3 = next(iter(result))
+        crop_img3 = first_key3 + '.png'
+
+        return render_template('results.html',
+                               crop_name1=first_key1, crop_img1=crop_img1, production1=result[first_key1],
+                               crop_name2=first_key2, crop_img2=crop_img2, production2=result[first_key2],
+                               crop_name3=first_key3, crop_img3=crop_img3, production3=result[first_key3])
+
 
 
 if __name__ == "__main__":
