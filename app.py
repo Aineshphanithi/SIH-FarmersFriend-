@@ -94,16 +94,19 @@ def register_airtable():
 def results():
     return render_template('results.html')
 
-<<<<<<< HEAD
+
 @app.route('/askaquestion.html')
 def askaquestion():
     return render_template('askaquestion.html')
 
+
+@app.route('/smartguide.html')
+def smartguide():
+    return render_template('smartguide.html')
+
 # @app.route('/results.html')
 # def results():
 #     return render_template('results.html')
-=======
->>>>>>> 471c2f55c511d42cda8732caffbeeab8f7018031
 
 def seasons_extract(mon):
     seasons = ['Whole Year']
@@ -168,29 +171,33 @@ def predict():
 
     result = {k: v for k, v in sorted(result.items(), key=lambda item: item[1], reverse=True)}
 
-<<<<<<< HEAD
-        first_key1 = next(iter(result))
-        crop_img1 = 'https://source.unsplash.com/200x300/?'+first_key1
-=======
+        # first_key1 = next(iter(result))
+        # crop_img1 = 'https://source.unsplash.com/200x300/?'+first_key1
     # print(rainfall, pa)
     # print(crops_dist)
->>>>>>> 471c2f55c511d42cda8732caffbeeab8f7018031
 
-    first_key1 = next(iter(result))
+    print(result)
+
+    itr = iter(result)
+
+    first_key1 = next(itr)
     crop_img1 = first_key1+'.png'
 
-    first_key2 = next(iter(result))
-    crop_img2 = first_key2 + '.png'
+    try:
+        first_key2 = next(itr)
+        crop_img2 = first_key2 + '.png'
 
-<<<<<<< HEAD
+    except StopIteration:
+        return render_template('results.html', crop_name1=first_key1, crop_img1=crop_img1, production1=result[first_key1])
+
+    try:
+        first_key3 = next(itr)
+        crop_img3 = first_key3 + '.png'
+
+    except StopIteration:
         return render_template('results.html',
-                               crop_name1=first_key1, crop_img1=crop_img1, production1=result[first_key1])
-                              # crop_name2=first_key2, crop_img2=crop_img2, production2=result[first_key2],
-                               #crop_name3=first_key3, crop_img3=crop_img3, production3=result[first_key3])
-=======
-    first_key3 = next(iter(result))
-    crop_img3 = first_key3 + '.png'
->>>>>>> 471c2f55c511d42cda8732caffbeeab8f7018031
+                               crop_name1=first_key1, crop_img1=crop_img1, production1=result[first_key1],
+                               crop_name2=first_key2, crop_img2=crop_img2, production2=result[first_key2])
 
     return render_template('results.html',
                            crop_name1=first_key1, crop_img1=crop_img1, production1=result[first_key1],
