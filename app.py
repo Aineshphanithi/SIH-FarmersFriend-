@@ -71,6 +71,10 @@ def weatherupdates():
 def smartguide():
     return render_template('smartguide.html')
 
+@app.route('/askaquestion.html')
+def askaquestion():
+    return render_template('askaquestion.html')
+
 # @app.route('/results.html')
 # def results():
 #     return render_template('results.html')
@@ -142,7 +146,7 @@ def predict():
         # print(crops_dist)
 
         first_key1 = next(iter(result))
-        crop_img1 = first_key1+'.png'
+        crop_img1 = 'https://source.unsplash.com/200x300/?'+first_key1
 
         first_key2 = next(iter(result))
         crop_img2 = first_key2 + '.png'
@@ -151,9 +155,9 @@ def predict():
         crop_img3 = first_key3 + '.png'
 
         return render_template('results.html',
-                               crop_name1=first_key1, crop_img1=crop_img1, production1=result[first_key1],
-                               crop_name2=first_key2, crop_img2=crop_img2, production2=result[first_key2],
-                               crop_name3=first_key3, crop_img3=crop_img3, production3=result[first_key3])
+                               crop_name1=first_key1, crop_img1=crop_img1, production1=result[first_key1])
+                              # crop_name2=first_key2, crop_img2=crop_img2, production2=result[first_key2],
+                               #crop_name3=first_key3, crop_img3=crop_img3, production3=result[first_key3])
 
 
 
