@@ -1,11 +1,11 @@
 from flask import Flask, request, render_template
-#from airtable import Airtable
+from airtable import Airtable
 
 import pickle
 import csv
 
 app = Flask(__name__)
-# airtable = Airtable('apppRkyEG5N3DMbaZ', 'user_data', api_key='keyfbkI9WoPwdcQT1')
+airtable = Airtable('apppRkyEG5N3DMbaZ', 'user_data', api_key='keyfbkI9WoPwdcQT1')
 
 crops_dict = {'Arecanut': 0, 'Other Kharif pulses': 1, 'Rice': 2, 'Banana': 3, 'Cashewnut': 4, 'Coconut': 5,
               'Dry ginger': 6, 'Sugarcane': 7, 'Sweet potato': 8, 'Tapioca': 9, 'Black pepper': 10,
@@ -74,21 +74,37 @@ def discussionFrom():
 
 @app.route('/register.html', methods=['POST'])
 def register_airtable():
-    # f_name = request.form['firstname']
-    # l_name = request.form['lastname']
-    # phone = request.form['phone']
-    # state = request.form['state']
-    # dist = request.form['district']
-    # pin = request.form['pin']
-    # address = request.form['address']
+    f_name = request.form['firstname']
+    l_name = request.form['lastname']
+    phone = request.form['phone']
+    state = request.form['state']
+    dist = request.form['district']
+    pin = request.form['pin']
+    address = request.form['address']
 
-    # if len(phone) > 10:
-    #     phone = phone[len(phone)-10:]
-    #
-    # details = {'Phone': phone, 'First Name': f_name, 'Last Name': l_name,
-    #            'State': state, 'District': dist, 'Pin Code': pin, 'Address': address}
-    #
-    # airtable.insert(details)
+    if len(phone) > 10:
+        phone = phone[len(phone) - 10:]
+
+    details = {'Phone': phone, 'First Name': f_name, 'Last Name': l_name,
+               'State': state, 'District': dist, 'Pin Code': pin, 'Address': address}
+
+    airtable.insert(details)
+
+    f_name = request.form['firstname']
+    l_name = request.form['lastname']
+    phone = request.form['phone']
+    state = request.form['state']
+    dist = request.form['district']
+    pin = request.form['pin']
+    address = request.form['address']
+
+    if len(phone) > 10:
+        phone = phone[len(phone)-10:]
+    
+    details = {'Phone': phone, 'First Name': f_name, 'Last Name': l_name,
+               'State': state, 'District': dist, 'Pin Code': pin, 'Address': address}
+    
+    airtable.insert(details)
 
     return render_template('index.html')
 
@@ -107,9 +123,12 @@ def askaquestion():
 def smartguide():
     return render_template('smartguide.html')
 
+<<<<<<< HEAD
 @app.route('/knowledgehub.html')
 def knowledgehub():
     return render_template('knowledgehub.html')
+=======
+>>>>>>> 981c68c867ac3a1eccf4360d9f89890909d4ad7f
 
 # @app.route('/results.html')
 # def results():
@@ -181,8 +200,8 @@ def predict():
 
     result = {k: v for k, v in sorted(result.items(), key=lambda item: item[1], reverse=True)}
 
-        # first_key1 = next(iter(result))
-        # crop_img1 = 'https://source.unsplash.com/200x300/?'+first_key1
+    # first_key1 = next(iter(result))
+    # crop_img1 = 'https://source.unsplash.com/200x300/?'+first_key1
     # print(rainfall, pa)
     # print(crops_dist)
 
@@ -191,14 +210,17 @@ def predict():
     itr = iter(result)
 
     first_key1 = next(itr)
-    crop_img1 = first_key1+'.png'
+    crop_img1 = first_key1 + '.png'
 
     try:
         first_key2 = next(itr)
         crop_img2 = first_key2 + '.png'
 
     except StopIteration:
-        return render_template('results.html', crop_name1=first_key1, crop_img1=crop_img1, production1=result[first_key1])
+        return render_template('results.html', crop_name1=first_key1, crop_img1=crop_img1,
+                               season1=result[first_key1][1], production1=result[first_key1][0])
+
+    print(result[first_key1])
 
     try:
         first_key3 = next(itr)
@@ -206,13 +228,33 @@ def predict():
 
     except StopIteration:
         return render_template('results.html',
-                               crop_name1=first_key1, crop_img1=crop_img1, production1=result[first_key1],
-                               crop_name2=first_key2, crop_img2=crop_img2, production2=result[first_key2])
+                               crop_name1=first_key1, crop_img1=crop_img1, season1=result[first_key1][1],
+                               production1=result[first_key1][0],
+                               crop_name2=first_key2, crop_img2=crop_img2, season2=result[first_key2][1],
+                               production2=result[first_key2][0])
+
+    try:
+        first_key4 = next(itr)
+        crop_img4 = first_key4 + '.png'
+
+    except StopIteration:
+        return render_template('results.html',
+                               crop_name1=first_key1, crop_img1=crop_img1, season1=result[first_key1][1],
+                               production1=result[first_key1][0],
+                               crop_name2=first_key2, crop_img2=crop_img2, season2=result[first_key2][1],
+                               production2=result[first_key2][0],
+                               crop_name3=first_key3, crop_img3=crop_img3, season3=result[first_key3][1],
+                               production3=result[first_key3][0])
 
     return render_template('results.html',
-                           crop_name1=first_key1, crop_img1=crop_img1, production1=result[first_key1],
-                           crop_name2=first_key2, crop_img2=crop_img2, production2=result[first_key2],
-                           crop_name3=first_key3, crop_img3=crop_img3, production3=result[first_key3])
+                           crop_name1=first_key1, crop_img1=crop_img1, season1=result[first_key1][1],
+                           production1=result[first_key1][0],
+                           crop_name2=first_key2, crop_img2=crop_img2, season2=result[first_key2][1],
+                           production2=result[first_key2][0],
+                           crop_name3=first_key3, crop_img3=crop_img3, season3=result[first_key3][1],
+                           production3=result[first_key3][0],
+                           crop_name4=first_key4, crop_img4=crop_img4, season4=result[first_key4][1],
+                           production4=result[first_key4][0])
 
 
 if __name__ == "__main__":
