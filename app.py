@@ -108,6 +108,7 @@ def smartguide():
 # def results():
 #     return render_template('results.html')
 
+
 def seasons_extract(mon):
     seasons = ['Whole Year']
     if mon in kharif_months:
@@ -159,15 +160,17 @@ def predict():
     result = {}
     for season in seasons:
         for crop in crops_dist[dist]:
-            pa = crop_model.predict([['2020', season_dict[season], crops_dict[crop], rainfall_avg]])
+            pa = crop_model.predict([[year, season_dict[season], crops_dict[crop], rainfall_avg]])
 
             # result.append([pa[0], crop])
 
             if crop in result.keys():
-                result[crop] = max(pa[0], result[crop])
+                # result[crop] = max(pa[0], result[crop])
+                if pa[0] > result[crop][0]:
+                    result[crop] = [pa[0], season]
 
             else:
-                result[crop] = pa[0]
+                result[crop] = [pa[0], season]
 
     result = {k: v for k, v in sorted(result.items(), key=lambda item: item[1], reverse=True)}
 
