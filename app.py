@@ -1,11 +1,11 @@
 from flask import Flask, request, render_template
-#from airtable import Airtable
+from airtable import Airtable
 
 import pickle
 import csv
 
 app = Flask(__name__)
-# airtable = Airtable('apppRkyEG5N3DMbaZ', 'user_data', api_key='keyfbkI9WoPwdcQT1')
+airtable = Airtable('apppRkyEG5N3DMbaZ', 'user_data', api_key='keyfbkI9WoPwdcQT1')
 
 crops_dict = {'Arecanut': 0, 'Other Kharif pulses': 1, 'Rice': 2, 'Banana': 3, 'Cashewnut': 4, 'Coconut': 5,
               'Dry ginger': 6, 'Sugarcane': 7, 'Sweet potato': 8, 'Tapioca': 9, 'Black pepper': 10,
