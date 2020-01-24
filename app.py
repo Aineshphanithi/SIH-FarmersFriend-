@@ -80,7 +80,7 @@ def register_airtable():
     address = request.form['address']
 
     if len(phone) > 10:
-        phone = phone[len(phone)-10:]
+        phone = phone[len(phone) - 10:]
 
     details = {'Phone': phone, 'First Name': f_name, 'Last Name': l_name,
                'State': state, 'District': dist, 'Pin Code': pin, 'Address': address}
@@ -103,6 +103,7 @@ def askaquestion():
 @app.route('/smartguide.html')
 def smartguide():
     return render_template('smartguide.html')
+
 
 # @app.route('/results.html')
 # def results():
@@ -174,8 +175,8 @@ def predict():
 
     result = {k: v for k, v in sorted(result.items(), key=lambda item: item[1], reverse=True)}
 
-        # first_key1 = next(iter(result))
-        # crop_img1 = 'https://source.unsplash.com/200x300/?'+first_key1
+    # first_key1 = next(iter(result))
+    # crop_img1 = 'https://source.unsplash.com/200x300/?'+first_key1
     # print(rainfall, pa)
     # print(crops_dist)
 
@@ -184,14 +185,17 @@ def predict():
     itr = iter(result)
 
     first_key1 = next(itr)
-    crop_img1 = first_key1+'.png'
+    crop_img1 = first_key1 + '.png'
 
     try:
         first_key2 = next(itr)
         crop_img2 = first_key2 + '.png'
 
     except StopIteration:
-        return render_template('results.html', crop_name1=first_key1, crop_img1=crop_img1, production1=result[first_key1])
+        return render_template('results.html', crop_name1=first_key1, crop_img1=crop_img1,
+                               season1=result[first_key1][1], production1=result[first_key1][0])
+
+    print(result[first_key1])
 
     try:
         first_key3 = next(itr)
@@ -199,13 +203,33 @@ def predict():
 
     except StopIteration:
         return render_template('results.html',
-                               crop_name1=first_key1, crop_img1=crop_img1, production1=result[first_key1],
-                               crop_name2=first_key2, crop_img2=crop_img2, production2=result[first_key2])
+                               crop_name1=first_key1, crop_img1=crop_img1, season1=result[first_key1][1],
+                               production1=result[first_key1][0],
+                               crop_name2=first_key2, crop_img2=crop_img2, season2=result[first_key2][1],
+                               production2=result[first_key2][0])
+
+    try:
+        first_key4 = next(itr)
+        crop_img4 = first_key4 + '.png'
+
+    except StopIteration:
+        return render_template('results.html',
+                               crop_name1=first_key1, crop_img1=crop_img1, season1=result[first_key1][1],
+                               production1=result[first_key1][0],
+                               crop_name2=first_key2, crop_img2=crop_img2, season2=result[first_key2][1],
+                               production2=result[first_key2][0],
+                               crop_name3=first_key3, crop_img3=crop_img3, season3=result[first_key3][1],
+                               production3=result[first_key3][0])
 
     return render_template('results.html',
-                           crop_name1=first_key1, crop_img1=crop_img1, production1=result[first_key1],
-                           crop_name2=first_key2, crop_img2=crop_img2, production2=result[first_key2],
-                           crop_name3=first_key3, crop_img3=crop_img3, production3=result[first_key3])
+                           crop_name1=first_key1, crop_img1=crop_img1, season1=result[first_key1][1],
+                           production1=result[first_key1][0],
+                           crop_name2=first_key2, crop_img2=crop_img2, season2=result[first_key2][1],
+                           production2=result[first_key2][0],
+                           crop_name3=first_key3, crop_img3=crop_img3, season3=result[first_key3][1],
+                           production3=result[first_key3][0],
+                           crop_name4=first_key4, crop_img4=crop_img4, season4=result[first_key4][1],
+                           production4=result[first_key4][0])
 
 
 if __name__ == "__main__":
