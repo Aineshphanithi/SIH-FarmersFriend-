@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-5.12.0-web/css/all.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style_sih.css') }}">
+  <title>Register</title>
+</head>
+
+<body>
+
+  <!--NAVBAR-->
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+  <div class="container">
+      <a href="/" class="navbar-brand"><img src="{{ url_for('static', filename='img/Logo.png') }}" width="200" height="50"alt="Farmer's Friend"></a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target = "#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a href="/" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item active">
+                  <a href="register.html" class="nav-link">Register</a>
+              </li>
+              <li class="nav-item">
+                  <a href="askaquestion.html" class="nav-link">Ask a Question</a>
+              </li>
+              <li class="nav-item">
+                  <a href="smartguide.html" class="nav-link">Smart Guide</a>
+              </li>
+              <li class="nav-item">
+                <a href="weatherupdates.html" class="nav-link">Weather Updates</a>
+            </li>
+              <li class="nav-item">
+                <a href="about.html" class="nav-link">About</a>
+            </li>
+          </ul>
+
+      </div>
+  </div>
+</nav>
+
+  <!-- PAGE HEADER -->
+  <header style="background-color: #230444" id="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 m-auto text-center">
+          <h1>Discussion Forum</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="py-3">
+    <form method="POST">
+    <div class="container">
+      <div class="row-lg-12">
+        <div class="col-lg-12">
+          <div class="card p-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label><b>How often should I apply (some rice fertilizer) to the rice crop?</b></label>
+                    <br>
+                    <label>Answers-0</label>
+                    <hr>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label><b>My rice crop is degrading a little. What should I do?</b></label>
+                    <br>
+                    <label>Answers-0</label>
+                    <hr>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label><b> Which is the best recommended fertilizer for Rice?</b></label>
+                    <br>
+                    <label>Answers-0</label>
+                    <hr>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <input type="text" placeholder="Enter the Question you would like to post" class="form-control-lg-6"></input>
+                    <br>
+                    <input type="button" value="Post" class="btn btn-outline-danger "></input>
+                    <hr>
+                  </div>
+                </div>
+              </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  </section>
+
+
+ <!--FOOTER-->
+ <footer id="main-footer" class="text-center p-4">
+  <div class="container">
+      <div class="row">
+          <div class="col">
+              <h5>Team Hack O' Holics</h5>
+              <p>Copyright &copy; <span id="year"></span></p>
+          </div>
+          <div class="col">
+              <h5>Quick Links</h5>
+              <a href="" class="h6">About</a><br>
+              <a href="" class="h6">Register</a>
+          </div>
+      </div>
+  </div>
+</footer>
+
+<script src="{{ url_for('static', filename='fontawesome-free-5.12.0-web/js/all.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+  <script>
+    // Get the current year for the copyright
+    $('#year').text(new Date().getFullYear());
+
+  </script>
+</body>
+
+</html>
