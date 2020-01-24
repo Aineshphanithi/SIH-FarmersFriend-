@@ -123,6 +123,12 @@ def askaquestion():
 def smartguide():
     return render_template('smartguide.html')
 
+<<<<<<< HEAD
+@app.route('/knowledgehub.html')
+def knowledgehub():
+    return render_template('knowledgehub.html')
+=======
+>>>>>>> 981c68c867ac3a1eccf4360d9f89890909d4ad7f
 
 # @app.route('/results.html')
 # def results():
