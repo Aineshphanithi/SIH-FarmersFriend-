@@ -104,6 +104,10 @@ def askaquestion():
 def smartguide():
     return render_template('smartguide.html')
 
+@app.route('/knowledgehub.html')
+def knowledgehub():
+    return render_template('knowledgehub.html')
+
 # @app.route('/results.html')
 # def results():
 #     return render_template('results.html')

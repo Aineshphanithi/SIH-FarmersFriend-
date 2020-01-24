@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-5.12.0-web/css/all.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style_sih.css') }}">
-  <title>Weather Updates</title>
+  <title>Smart Guide</title>
 </head>
 
 <body>
@@ -34,15 +34,15 @@
               <li class="nav-item">
                   <a href="smartguide.html" class="nav-link">Smart Guide</a>
               </li>
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a href="weatherupdates.html" class="nav-link">Weather Updates</a>
-            </li>
-            <li class="nav-item">
-              <a href="knowledgehub.html" class="nav-link">Knowledge Hub</a>
-            </li>
+              </li>
+              <li class="nav-item active">
+                <a href="knowledgehub.html" class="nav-link">Knowledge Hub</a>
+              </li>
               <li class="nav-item">
                 <a href="about.html" class="nav-link">About</a>
-            </li>
+              </li>
           </ul>
 
       </div>
@@ -50,27 +50,45 @@
 </nav>
 
   <!-- PAGE HEADER -->
-  <header style="background-color: #2196f3" id="page-header"> 
+  <header style="background-color: #90303d" id="page-header">
     <div class="container">
       <div class="row">
         <div class="col-md-6 m-auto text-center">
-          <h1>WEATHER UPDATES</h1>
+          <h1>KNOWLEDGE HUB</h1>
         </div>
       </div>
     </div>
   </header>
-  <!-- CONTACT SECTION -->
-  <section id="tweets" class="py-3">
+
+  <!-- INFO SECTION -->
+  <section class="p-5">
     <div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <a class="twitter-timeline" href="https://twitter.com/Indiametdept?ref_src=twsrc%5Etfw">Tweets by Indiametdept</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <div class="row align-items-center">
+            <div class="col-md">
+                <div class="card">
+                    <img class="p-3 figure-img img-fluid" src="{{ url_for('static', filename='img/rural_farming.jpg') }}" alt="Rural Image">
+                    <div class="card-body">
+                      <h5 class="card-title">Rural Farming</h5>
+                      <p class="card-text">Latest information about rural farming.</p>
+                      <a href="#" class="btn btn-primary">Enter</a>
+                    </div>
+                </div>
             </div>
+            <div class="col-md">
+                <div class="card">
+                    <img class="p-3 figure-img img-fluid" src="{{ url_for('static', filename='img/urban_farming.jpg') }}" alt="Urban Image" height="100px">
+                    <div class="card-body">
+                      <h5 class="card-title">Urban Farming</h5>
+                      <p class="card-text">Latest information about urban farming.</p>
+                      <a href="#" class="btn btn-primary">Enter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
   </section>
 
-  
  <!--FOOTER-->
  <footer id="main-footer" class="text-center p-4">
   <div class="container">
@@ -81,8 +99,8 @@
           </div>
           <div class="col">
               <h5>Quick Links</h5>
-              <a href="" class="h6">About</a><br>
-              <a href="" class="h6">Register</a>
+              <a href="about.html" class="h6">About</a><br>
+              <a href="register.html" class="h6">Register</a>
           </div>
       </div>
   </div>
