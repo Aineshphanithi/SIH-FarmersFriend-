@@ -1,27 +1,14 @@
 body{
     overflow-x: hidden;
-    font-family: 'Lato';
 }
-/* lato-regular - latin */
-@font-face {
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    src: url('{{ url_for('static', filename='fonts/lato-v16-latin-regular.eot')}}') /* IE9 Compat Modes */
-    src: local('Lato Regular'), local('Lato-Regular'),
-         url('{{ url_for('static', filename='fonts/lato-v16-latin-regular.eot?#iefix')}}'),  /* IE6-IE8 */
-         url('{{ url_for('static', filename='fonts/lato-v16-latin-regular.woff2')}}') format('woff2'),
-         url('{{ url_for('static', filename='fonts/lato-v16-latin-regular.woff')}}') format('woff'),
-         url('{{ url_for('static', filename='fonts/lato-v16-latin-regular.ttf')}}') format('truetype'); 
-  }
 .nav{
     color:#8cba51 !important;
 }
 .navbar .nav-link{
-    font-size: 14px;
+    font-size: 10px;
     text-transform: uppercase;
-    padding-left: 0.7rem !important;
-    padding-right: 0.7rem !important;
+    padding-left: 0.3rem !important;
+    padding-right: 0.3rem !important;
 }
 
 .navbar .nav-item.active{

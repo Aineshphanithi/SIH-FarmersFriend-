@@ -68,7 +68,7 @@ def register():
 def weatherupdates():
     return render_template('weatherupdates.html')
 
-@app.route('/DiscussionForum.html')
+@app.route('/discussionforum.html')
 def discussionFrom():
     return render_template('DiscussionForum.html')
 
@@ -90,22 +90,6 @@ def register_airtable():
 
     airtable.insert(details)
 
-    f_name = request.form['firstname']
-    l_name = request.form['lastname']
-    phone = request.form['phone']
-    state = request.form['state']
-    dist = request.form['district']
-    pin = request.form['pin']
-    address = request.form['address']
-
-    if len(phone) > 10:
-        phone = phone[len(phone)-10:]
-    
-    details = {'Phone': phone, 'First Name': f_name, 'Last Name': l_name,
-               'State': state, 'District': dist, 'Pin Code': pin, 'Address': address}
-    
-    airtable.insert(details)
-
     return render_template('index.html')
 
 
@@ -123,12 +107,10 @@ def askaquestion():
 def smartguide():
     return render_template('smartguide.html')
 
-<<<<<<< HEAD
+
 @app.route('/knowledgehub.html')
 def knowledgehub():
     return render_template('knowledgehub.html')
-=======
->>>>>>> 981c68c867ac3a1eccf4360d9f89890909d4ad7f
 
 # @app.route('/results.html')
 # def results():
