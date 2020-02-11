@@ -192,11 +192,11 @@ def predict():
     itr = iter(result)
 
     first_key1 = next(itr)
-    crop_img1 = first_key1 + '.png'
+    crop_img1 = '/static/img/'+first_key1 + '.png'
 
     try:
         first_key2 = next(itr)
-        crop_img2 = first_key2 + '.png'
+        crop_img2 = '/static/img/'+first_key2 + '.png'
 
     except StopIteration:
         return render_template('results.html', crop_name1=first_key1, crop_img1=crop_img1,
@@ -206,7 +206,7 @@ def predict():
 
     try:
         first_key3 = next(itr)
-        crop_img3 = first_key3 + '.png'
+        crop_img3 = '/static/img/' + first_key3 + '.png'
 
     except StopIteration:
         return render_template('results.html',
@@ -217,7 +217,7 @@ def predict():
 
     try:
         first_key4 = next(itr)
-        crop_img4 = first_key4 + '.png'
+        crop_img4 = '/static/img/' + first_key4 + '.png'
 
     except StopIteration:
         return render_template('results.html',
